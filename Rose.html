@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Rose Day ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.45);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+      max-width: 90%;
+    }
+
+    h1 {
+      font-size: 2.3em;
+      margin-bottom: 10px;
+    }
+
+    #typing {
+      font-size: 1.1em;
+      min-height: 60px;
+      margin-top: 10px;
+    }
+
+    .poem {
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 1.05em;
+      color: #ffd1dc;
+    }
+
+    .rose {
+      font-size: 80px;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4b6e;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff2a5c;
+      transform: scale(1.05);
+    }
+
+    .falling-rose {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="rose">🌹</div>
+    <h1>Happy Rose Day Kaddu, My Love ❤️</h1>
+    <p id="typing"></p>
+
+    <div class="poem">
+      In a world full of ordinary views,<br>
+      my favourite sight will always be you. 💖
+    </div>
+
+    <button onclick="showLove()">Click for Surprise 💌</button>
+  </div>
+
+  <script>
+    const message = "This rose carries all the feelings I fail to say out loud. Every beat of my heart chooses you, again and again. 🌹❤️";
+    let i = 0;
+
+    function typeWriter() {
+      if (i < message.length) {
+        document.getElementById("typing").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+
+    typeWriter();
+
+    function showLove() {
+      alert("If love had a face, it would look like you. Happy Rose Day 💘");
+    }
+
+    function createRose() {
+      const rose = document.createElement("div");
+      rose.className = "falling-rose";
+      rose.innerHTML = "🌹";
+      rose.style.left = Math.random() * 100 + "vw";
+      rose.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(rose);
+
+      setTimeout(() => {
+        rose.remove();
+      }, 8000);
+    }
+
+    setInterval(createRose, 400);
+  </script>
+
+</body>
+</html>
